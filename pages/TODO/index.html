@@ -1,34 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TODO</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script src="script.js"></script>
-  </head>
-  <body>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todo List</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>Todo List</h1>
+    </header>
     <main>
-      <header>
-        <h1 id="titleh1">TODO</h1>
-      </header>
-      <form onsubmit="adicionarAoLocalStorage(event)">
-        <div>
-          <input type="text" id="titleTask" placeholder="Informe o título da tarefa"/>
-        </div>
-        <div>
-          
-          <textarea name="" id="textTask" placeholder="Informe a descrição da tarefa"></textarea></label>
-        </div>
-        <button type="submit">Enviar</button>
+      <dialog>
+        <form id="editTaskForm" onsubmit="editTask(event)">
+          <input type="text" name="title" id="title" required placeholder="Informe o título da tarefa" />
+          <textarea id="description" name="description" required placeholder="Informe a descrição da tarefa"></textarea>
+          <div>
+            <button type="submit" id="editarDados">Editar Tarefa</button>
+            <button type="button" onclick="closeDialog()">Cancelar</button>
+          </div>
+        </form>
+      </dialog>
+
+      <!-- Formulário para adicionar tarefas -->
+      <form id="taskForm" onsubmit="addTask(event)">
+        <input type="text" name="title" id="title" required placeholder="Informe o título da tarefa" />
+        <textarea id="description" name="description" required placeholder="Informe a descrição da tarefa"></textarea>
+        <button type="submit">Salvar Tarefa</button>
       </form>
 
-
-      <section>
-        <div id="listaDeTarefas">
-
-        </div>
-      </section>
+      <!-- Lista de tarefas -->
+      <ul id="taskList"></ul>
     </main>
-  </body>
+    <footer>&copy; 2024 Todo List</footer>
+  </div>
+
+  <script src="./index.js"></script>
+  <script src="../../footer-counter.js"></script>
+</body>
+
 </html>
